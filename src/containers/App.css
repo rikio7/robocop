@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Videopac Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Videopac Regular'), url('Videopac.woff') format('woff');
+    }
+
+    h1{
+        font-family: 'Videopac Regular';
+        font-weight: 150;
+        color: #0ccab9;
+    }
