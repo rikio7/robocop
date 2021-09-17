@@ -3,6 +3,7 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import {robots}  from '../robots';
 import Scroll from '../components/Scroll';
+import ErrorBoundry from '../components/ErrorBoundry'
 import './App.css';
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
 
   onsearchChange = (event) => {
     this.setState({searchfield : event.target.value})
-    console.log(this.state.searchfield)
+    
        }
 
   render(){
@@ -27,13 +28,15 @@ class App extends Component {
         return !robots.length ?
           <h1>Loading</h1> :
          (
-          <div className='tc'>
-         <h1 className='f1'>RoboCops</h1>
-         <SearchBox searchChange={this.onsearchChange} />
-         <Scroll>
-         <CardList robots={filteredRobots}/>
-         </Scroll>
-       </div>
+          <div className='tc' >
+            <h1 className='f1'>RoboCops</h1>
+             <SearchBox searchChange={this.onsearchChange} />
+             <Scroll>
+              <ErrorBoundry>
+               <CardList robots={filteredRobots}/>
+              </ErrorBoundry>
+             </Scroll>
+          </div>
    );
   }
 }
